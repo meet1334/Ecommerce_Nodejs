@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 //middleware or set router
-app.use("/api/products/", products_routes);
+app.use("/products", products_routes);
 
 const start = async (req, res) => {
   try {

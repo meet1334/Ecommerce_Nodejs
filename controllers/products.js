@@ -1,6 +1,16 @@
+const Product = require("../models/product");
 const getAllProducts = async (req, res) => {
+  const queryObject = {};
+  const { company } = req.query;
+  if (company) {
+    queryObject.company = company;
+  }
+  console.log(queryObject, "filter by ");
+  const myData = await Product.find(queryObject);
   res.status(200).json({
-    msg: "i am happy!!!",
+    myData,
+    length: myData.length,
+    filterby: queryObject,
   });
 };
 
