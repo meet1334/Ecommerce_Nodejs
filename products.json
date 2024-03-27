@@ -1,0 +1,50 @@
+[
+  {
+    "name": "iphone",
+    "price": 39999,
+    "featured": true,
+    "company": "apple"
+  },
+  {
+    "name": "iphonex",
+    "price": 49999,
+    "featured": true,
+    "company": "apple"
+  },
+  {
+    "name": "watch",
+    "price": 19999,
+    "featured": true,
+    "company": "xioami"
+  },
+  {
+    "name": "earbuds",
+    "price": 999,
+    "company": "oppo"
+  },
+  {
+    "name": "carger",
+    "price": 499,
+    "company": "samsung"
+  },
+  {
+    "name": "earbuds",
+    "price": 1999,
+    "company": "apple"
+  },
+  {
+    "name": "powerbank",
+    "price": 2499,
+    "company": "xioami"
+  },
+  {
+    "name": "samsung ultra pro max",
+    "price": 149999,
+    "company": "samsung"
+  },
+  {
+    "name": "camera",
+    "price": 29999,
+    "company": "oppo"
+  }
+]
