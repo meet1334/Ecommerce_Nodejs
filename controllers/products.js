@@ -1,12 +1,36 @@
 const Product = require("../models/product");
 const getAllProducts = async (req, res) => {
   const queryObject = {};
-  const { company } = req.query;
+  const { company, sort, name, featured } = req.query;
+
+  // for finding by fields
+
   if (company) {
     queryObject.company = company;
   }
-  console.log(queryObject, "filter by ");
-  const myData = await Product.find(queryObject);
+
+  if (featured) {
+    queryObject.featured = featured;
+  }
+
+  // seaching by regex
+
+  if (name) {
+    queryObject.name = { $regex: name, $options: "i" };
+  }
+
+  let apiData = Product.find(queryObject);
+
+  //for sorting by fields
+  //sorting was immplement btw 2 fields sort = name,price
+
+  if (sort) {
+    let sortFix = sort.replace(",", " ");
+    // console.log(sortFix);
+    apiData = apiData.sort(sortFix);
+  }
+
+  const myData = await apiData;
   res.status(200).json({
     myData,
     length: myData.length,
@@ -14,10 +38,18 @@ const getAllProducts = async (req, res) => {
   });
 };
 
-const getAllProductsTesting = async (req, res) => {
-  res.status(200).json({
-    msg: "i am happy testing only!!!",
-  });
+
+//only sort api
+
+const getProductsBySort = async (req, res) => {
+  const { sort } = req.query;
+  
+  if (sort) {
+    sortFix = sort.replace(",", " ");
+  }
+  console.log(sortFix);
+  const myData = await Product.find().sort(sortFix);
+  res.status(200).json({ myData, length: myData.length });
 };
 
-module.exports = { getAllProducts, getAllProductsTesting };
+module.exports = { getAllProducts, getProductsBySort };
